@@ -5,15 +5,19 @@ export default class App extends Component {
   state = {
     nflTeams: [],
   }
-
-  
   showNflTeams = () => {
     return this.state.nflTeams.map((nflTeam) => {
-      console.log(nflTeam)
-      return (<div key={this._id}>{JSON.stringify(nflTeam)}</div>)
+      return (
+        <div key={this._id} className="nfl">
+          <section>
+            <h2>{nflTeam.location} {nflTeam.team_mascot}</h2>
+            <p>Conference & Division: {nflTeam.conference} {nflTeam.division}</p>
+            <p>2020 Head Coach: {nflTeam.head_coach}</p>
+          </section>
+        </div>
+      )
     })
   }
-
   getNflTeams = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/nfl-teams`, {
       method: 'GET',
@@ -32,16 +36,13 @@ export default class App extends Component {
       console.log(response)
     }
   }
-
   componentDidMount() {
     this.getNflTeams()
   }
-
-
-
   render() {
     return (
       <div>
+        <h1>NFL Teams</h1>
         {this.showNflTeams()}
       </div>
     );
