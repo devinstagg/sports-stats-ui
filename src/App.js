@@ -119,26 +119,35 @@ export default class App extends Component {
       <div className="hub">
         <section className="adding">
           <h2 className="section-header">Add Your Team</h2>
+          <div>
           <label htmlFor="location-input">Location (Example - New England for the Patriots): </label>
           <input id="location-input" type="text" value={this.state.userInput.location} onChange={this.locationChanged} />
-          <br />
+          </div>
+          <div>
           <label htmlFor="team-mascot-input">Mascot (Example - Patriots): </label>
           <input id="team-mascot-input" type="text" value={this.state.userInput.teamMascot} onChange={this.teamMascotChanged} />
-          <br />
+          </div>
+          <div>
           <label htmlFor="conferece-input">Conference (AFC or NFC): </label>
           <input id="conference-input" type="text" value={this.state.userInput.conference} onChange={this.conferenceChanged} />
-          <br />
+          </div>
+          <div>
           <label htmlFor="division-input">Division (North, South, East, or West): </label>
           <input id="division-input" type="text" value={this.state.userInput.division} onChange={this.divisionChanged} />
-          <br />
+          </div>
+          <div>
           <label htmlFor="head-coach-input">Head Coach (Full Name): </label>
           <input id="head-coach-input" type="text" value={this.state.userInput.headCoach} onChange={this.headCoachChanged} />
-          <br />
+          </div>
+          <div>
           <label htmlFor="regular-season-2019-wins-input">2019 Season Wins (number only): </label>
           <input id="regular-season-2019-wins-input" type="number" value={this.state.userInput.regularSeasonWins2019} onChange={this.regularSeasonWins2019Changed} />
-          <br />
+          </div>
+          <div>
           <label htmlFor="playoffs-input">Made Playoffs? (Yes or No): </label>
           <input id="playoffs-input" type="text" value={this.state.userInput.playoffs} onChange={this.playoffsChanged} />
+          </div>
+          <button onClick={this.submit}>Submit</button>
         </section>
         <section className="teams">
           <h2 className="section-header">NFL Teams</h2>
