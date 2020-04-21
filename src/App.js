@@ -10,10 +10,49 @@ export default class App extends Component {
       conference: '',
       division: '',
       headCoach: '',
-      regularSeasonWins2019: '',
+      regularSeasonWins2019: 0,
       playoffs: ''
     }
   }
+
+  submit = async () => {
+    const nflTeam = this.state.userInput
+
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/nfl-teams`, {
+      method: nflTeam._id ? 'PUT' : 'POST',
+      mode: 'cors',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(nflTeam)
+    })
+    const successful = response.status === 201 || response.status === 200
+
+    if (successful) {
+      await this.getNflTeams()
+
+      this.setState({
+        userInput: {
+          location: '',
+          teamMascot: '',
+          conference: '',
+          division: '',
+          headCoach: '',
+          regularSeasonWins2019: 0,
+          playoffs: ''
+        }, 
+        error: null
+      })
+    } else {
+      const error = await response.json()
+
+      this.setState({ error })
+      console.log(error)
+    }
+  }
+
+
+
   showNflTeams = () => {
     return this.state.nflTeams.map((nflTeam) => {
       return (
@@ -120,32 +159,32 @@ export default class App extends Component {
         <section className="adding">
           <h2 className="section-header">Add Your Team</h2>
           <div>
-          <label htmlFor="location-input">Location (Example - New England for the Patriots): </label>
-          <input id="location-input" type="text" value={this.state.userInput.location} onChange={this.locationChanged} />
+            <label htmlFor="location-input">Location (Example - New England for the Patriots): </label>
+            <input id="location-input" type="text" value={this.state.userInput.location} onChange={this.locationChanged} />
           </div>
           <div>
-          <label htmlFor="team-mascot-input">Mascot (Example - Patriots): </label>
-          <input id="team-mascot-input" type="text" value={this.state.userInput.teamMascot} onChange={this.teamMascotChanged} />
+            <label htmlFor="team-mascot-input">Mascot (Example - Patriots): </label>
+            <input id="team-mascot-input" type="text" value={this.state.userInput.teamMascot} onChange={this.teamMascotChanged} />
           </div>
           <div>
-          <label htmlFor="conferece-input">Conference (AFC or NFC): </label>
-          <input id="conference-input" type="text" value={this.state.userInput.conference} onChange={this.conferenceChanged} />
+            <label htmlFor="conferece-input">Conference (AFC or NFC): </label>
+            <input id="conference-input" type="text" value={this.state.userInput.conference} onChange={this.conferenceChanged} />
           </div>
           <div>
-          <label htmlFor="division-input">Division (North, South, East, or West): </label>
-          <input id="division-input" type="text" value={this.state.userInput.division} onChange={this.divisionChanged} />
+            <label htmlFor="division-input">Division (North, South, East, or West): </label>
+            <input id="division-input" type="text" value={this.state.userInput.division} onChange={this.divisionChanged} />
           </div>
           <div>
-          <label htmlFor="head-coach-input">Head Coach (Full Name): </label>
-          <input id="head-coach-input" type="text" value={this.state.userInput.headCoach} onChange={this.headCoachChanged} />
+            <label htmlFor="head-coach-input">Head Coach (Full Name): </label>
+            <input id="head-coach-input" type="text" value={this.state.userInput.headCoach} onChange={this.headCoachChanged} />
           </div>
           <div>
-          <label htmlFor="regular-season-2019-wins-input">2019 Season Wins (number only): </label>
-          <input id="regular-season-2019-wins-input" type="number" value={this.state.userInput.regularSeasonWins2019} onChange={this.regularSeasonWins2019Changed} />
+            <label htmlFor="regular-season-2019-wins-input">2019 Season Wins (number only): </label>
+            <input id="regular-season-2019-wins-input" type="number" value={this.state.userInput.regularSeasonWins2019} onChange={this.regularSeasonWins2019Changed} />
           </div>
           <div>
-          <label htmlFor="playoffs-input">Made Playoffs? (Yes or No): </label>
-          <input id="playoffs-input" type="text" value={this.state.userInput.playoffs} onChange={this.playoffsChanged} />
+            <label htmlFor="playoffs-input">Made Playoffs? (Yes or No): </label>
+            <input id="playoffs-input" type="text" value={this.state.userInput.playoffs} onChange={this.playoffsChanged} />
           </div>
           <button onClick={this.submit}>Submit</button>
         </section>
