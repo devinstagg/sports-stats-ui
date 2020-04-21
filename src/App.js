@@ -60,6 +60,60 @@ export default class App extends Component {
     })
   }
 
+  teamMascotChanged = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.user,
+        teamMascot: event.target.value
+      }
+    })
+  }
+
+  conferenceChanged = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.user,
+        conference: event.target.value
+      }
+    })
+  }
+
+  divisionChanged = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.user,
+        division: event.target.value
+      }
+    })
+  }
+
+  headCoachChanged = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.user,
+        headCoach: event.target.value
+      }
+    })
+  }
+
+  regularSeasonWins2019Changed = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.user,
+        regularSeasonWins2019: event.target.value
+      }
+    })
+  }
+
+  playoffsChanged = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.user,
+        playoffs: event.target.value
+      }
+    })
+  }
+
   render() {
     return (
       <div className="hub">
