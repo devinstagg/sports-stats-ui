@@ -20,7 +20,7 @@ export default class App extends Component {
         <div key={this._id}>
           <h2>{nflTeam.location} {nflTeam.teamMascot}</h2>
           <p>Conference & Division: {nflTeam.conference} {nflTeam.division}</p>
-          <p>2020 Head Coach: {nflTeam.headCoach}</p>
+          <p>Current Head Coach: {nflTeam.headCoach}</p>
           <p>2019 Wins: {nflTeam.regularSeasonWins2019}</p>
           <p>Playoffs? {nflTeam.playoffs}</p>
         </div>
@@ -54,10 +54,25 @@ export default class App extends Component {
         <section className="adding">
           <h2 className="section-header">Add Your Team</h2>
           <label htmlFor="location-input">Location (Example - New England for the Patriots): </label>
-          <input id="location-input" type="text" value={this.state.userInput.location} onChange={this.locationChanged}/>
-          <br/>
+          <input id="location-input" type="text" value={this.state.userInput.location} onChange={this.locationChanged} />
+          <br />
           <label htmlFor="team-mascot-input">Mascot (Example - Patriots): </label>
-          <input id="team-mascot-input" type="text" value={this.state.userInput.teamMascot} onChange={this.teamMascotChanged}/>
+          <input id="team-mascot-input" type="text" value={this.state.userInput.teamMascot} onChange={this.teamMascotChanged} />
+          <br />
+          <label htmlFor="conferece-input">Conference (AFC or NFC): </label>
+          <input id="conference-input" type="text" value={this.state.userInput.conference} onChange={this.conferenceChanged} />
+          <br />
+          <label htmlFor="division-input">Division (North, South, East, or West): </label>
+          <input id="division-input" type="text" value={this.state.userInput.division} onChange={this.divisionChanged} />
+          <br />
+          <label htmlFor="head-coach-input">Head Coach (Full Name): </label>
+          <input id="head-coach-input" type="text" value={this.state.userInput.headCoach} onChange={this.headCoachChanged} />
+          <br />
+          <label htmlFor="regular-season-2019-wins-input">2019 Season Wins (number only): </label>
+          <input id="regular-season-2019-wins-input" type="number" value={this.state.userInput.regularSeasonWins2019} onChange={this.regularSeasonWins2019Changed} />
+          <br />
+          <label htmlFor="playoffs-input">Made Playoffs? (Yes or No): </label>
+          <input id="playoffs-input" type="text" value={this.state.userInput.playoffs} onChange={this.playoffsChanged} />
         </section>
         <section className="teams">
           <h2 className="section-header">NFL Teams</h2>
