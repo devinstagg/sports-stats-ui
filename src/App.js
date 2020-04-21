@@ -55,6 +55,9 @@ export default class App extends Component {
           <h2 className="section-header">Add Your Team</h2>
           <label htmlFor="location-input">Location (Example - New England for the Patriots): </label>
           <input id="location-input" type="text" value={this.state.userInput.location} onChange={this.locationChanged}/>
+          <br/>
+          <label htmlFor="team-mascot-input">Mascot (Example - Patriots): </label>
+          <input id="team-mascot-input" type="text" value={this.state.userInput.teamMascot} onChange={this.teamMascotChanged}/>
         </section>
         <section className="teams">
           <h2 className="section-header">NFL Teams</h2>
