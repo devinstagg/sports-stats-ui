@@ -48,6 +48,18 @@ export default class App extends Component {
   componentDidMount() {
     this.getNflTeams()
   }
+
+  /* FIELDS CHANGES */
+
+  locationChanged = (event) => {
+    this.setState({
+      userInput: {
+        ...this.state.userInput,
+        location: event.target.value
+      }
+    })
+  }
+
   render() {
     return (
       <div className="hub">
