@@ -20,7 +20,7 @@ export default class App extends Component {
 
     const response = await fetch(`${process.env.REACT_APP_API_URL}/nfl-teams`, {
       method: nflTeam._id ? 'PUT' : 'POST',
-      mode: 'no-cors',
+      mode: 'cors',
       headers: {
         'content-type': 'application/json'
       },
@@ -69,7 +69,7 @@ export default class App extends Component {
   getNflTeams = async () => {
     const response = await fetch(`${process.env.REACT_APP_API_URL}/nfl-teams`, {
       method: 'GET',
-      mode: 'no-cors',
+      mode: 'cors',
       headers: {
         'accept': 'application/json'
       }
