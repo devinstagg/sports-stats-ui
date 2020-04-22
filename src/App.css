@@ -17,4 +17,9 @@
   font-weight: 600;
 }
 
+.delete-button {
+  background-color: red;
+  color: white;
+}
+
 
