@@ -62,6 +62,8 @@ export default class App extends Component {
           <p>Current Head Coach: {nflTeam.headCoach}</p>
           <p>2019 Wins: {nflTeam.regularSeasonWins2019}</p>
           <p>Playoffs? {nflTeam.playoffs}</p>
+          <button nflTeamId={nflTeam._id} onClick={this.editNflTeam}>Edit This Team</button>
+          <button nflTeamId={nflTeam._id} onClick={this.deleteNflTeam}>Delete This Team</button>
         </div>
       )
     })
