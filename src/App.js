@@ -56,7 +56,7 @@ export default class App extends Component {
   showNflTeams = () => {
     return this.state.nflTeams.map((nflTeam) => {
       return (
-        <div key={this._id}>
+        <div key={nflTeam._id}>
           <h2>{nflTeam.location} {nflTeam.teamMascot}</h2>
           <p>Conference & Division: {nflTeam.conference} {nflTeam.division}</p>
           <p>Current Head Coach: {nflTeam.headCoach}</p>
