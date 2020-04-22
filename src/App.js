@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
 export default class App extends Component {
@@ -51,7 +51,20 @@ export default class App extends Component {
     }
   }
 
+  deleteNflTeam = async (event) => {
+    const nflTeamId = event.target.attributes.getNamedItem('nflteamid').value
 
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/nfl-teams/${nflTeamId}`, {
+      method: 'DELETE',
+      mode: 'cors'
+    })
+
+    const success = response.status === 200
+    
+    if (success) {
+      await this.getNflTeams()
+    }
+  }
 
   showNflTeams = () => {
     return this.state.nflTeams.map((nflTeam) => {
@@ -62,8 +75,8 @@ export default class App extends Component {
           <p>Current Head Coach: {nflTeam.headCoach}</p>
           <p>2019 Wins: {nflTeam.regularSeasonWins2019}</p>
           <p>Playoffs? {nflTeam.playoffs}</p>
-          <button nflTeamId={nflTeam._id} onClick={this.editNflTeam}>Edit This Team</button>
-          <button nflTeamId={nflTeam._id} onClick={this.deleteNflTeam}>Delete This Team</button>
+          <button nflteamid={nflTeam._id} onClick={this.editNflTeam}>Edit This Team</button>
+          <button nflteamid={nflTeam._id} onClick={this.deleteNflTeam}>Delete This Team</button>
         </div>
       )
     })
