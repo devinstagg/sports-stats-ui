@@ -102,7 +102,7 @@ export default class App extends Component {
   teamMascotChanged = (event) => {
     this.setState({
       userInput: {
-        ...this.state.user,
+        ...this.state.userInput,
         teamMascot: event.target.value
       }
     })
@@ -111,7 +111,7 @@ export default class App extends Component {
   conferenceChanged = (event) => {
     this.setState({
       userInput: {
-        ...this.state.user,
+        ...this.state.userInput,
         conference: event.target.value
       }
     })
@@ -120,7 +120,7 @@ export default class App extends Component {
   divisionChanged = (event) => {
     this.setState({
       userInput: {
-        ...this.state.user,
+        ...this.state.userInput,
         division: event.target.value
       }
     })
@@ -129,7 +129,7 @@ export default class App extends Component {
   headCoachChanged = (event) => {
     this.setState({
       userInput: {
-        ...this.state.user,
+        ...this.state.userInput,
         headCoach: event.target.value
       }
     })
@@ -138,7 +138,7 @@ export default class App extends Component {
   regularSeasonWins2019Changed = (event) => {
     this.setState({
       userInput: {
-        ...this.state.user,
+        ...this.state.userInput,
         regularSeasonWins2019: event.target.value
       }
     })
@@ -147,7 +147,7 @@ export default class App extends Component {
   playoffsChanged = (event) => {
     this.setState({
       userInput: {
-        ...this.state.user,
+        ...this.state.userInput,
         playoffs: event.target.value
       }
     })
