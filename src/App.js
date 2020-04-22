@@ -66,6 +66,19 @@ export default class App extends Component {
     }
   }
 
+  editNflTeam = async (event) => {
+    const nflTeamId = event.target.attributes.getNamedItem('nflteamid').value
+    const nflTeam = this.state.nflTeams.reduce((nflTeamToUpdate, nflTeam) => {
+      return nflTeam._id === nflTeamId ? nflTeam : nflTeamToUpdate
+    }, null) 
+
+    if (nflTeam) {
+      this.setState({
+        userInput: nflTeam
+      })
+    }
+  }
+
   showNflTeams = () => {
     return this.state.nflTeams.map((nflTeam) => {
       return (
